@@ -1,60 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>First Milestone</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="resume-container">
-      <header class="header">
-        
-        <div class="profile">
-          <img src="prof7.jpg" alt="Profile Picture" id="profile-picture" />
-          <div class="personal-info">
-            <h2 id="name">YOUSRA KHAN</h2>
-            <p class="contact">
-              Email: <a href="email">whykaydigimart@gmail.com</a>
-            </p>
-            <p class="contact">
-              Phone: <a href="call">+92 3269096850</a>
-            </p>
-          </div>
-        </div>
-      </header>
 
-      <div class="tabs">
-        <button id="education-tab">Education</button>
-        <button id="skills-tab">Skills</button>
-        <button id="experience-tab">Experience</button>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Static Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-      <main class="content">
-       
-        <section id="education-content" class="content-section">
-          <h2>Education</h2>
-          <div class="card-grid"></div>
-        </section>
+<body>
+  <div id="resume-form-container">
+    <h1>STATIC RESUME BUILDER</h1>
+  <form id="resume-form">
 
-        
-        <section id="skills-content" class="content-section">
-          <h2>Skills</h2>
-          <ul class="skill-list"></ul>
-        </section>
+    <fieldset>
+      <legend>Username</legend>
+      <input type="text" id="username" placeholder="Enter your username" required><br /><br />
+      <legend>Personal Info</legend><br />
+      <label for="photo">upload photo:</label>
+      <input type="file" id="photo" name="photo" required>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" placeholder="Enter your address" required>
+    </fieldset>
 
-       
-        <section id="work-experience-content" class="content-section">
-          <h2>Work Experience</h2>
-          <div class="card-grid"></div>
-        </section>
-      </main>
+    <fieldset>
+      <legend>Education</legend>
+      <label for="degree">Degree:</label>
+      <input type="text" id="degree" name="degree" placeholder="Enter your degree" required>
+      <label for="university">University:</label>
+      <input type="text" id="university" name="university" placeholder="Enter your university" required>
+      <label for="year">Year:</label>
+      <input type="text" id="year" name="year" placeholder="Enter your year" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Work Experience</legend>
+      <label for="company">Company:</label>
+      <input type="text" id="company" name="company" placeholder="Enter your company" required>
+      <label for="position">Position:</label>
+      <input type="text" id="position" name="position" placeholder="Enter your position" required>
+      <label for="start-date">Start Date:</label>
+      <input type="text" id="start-date" name="start-date" placeholder="Enter your start date" required>
+      <label for="end-date">End Date:</label>
+      <input type="text" id="end-date" name="end-date" placeholder="Enter your end date" required>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" placeholder="Enter your description" required></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Skills</legend>
+      <label for="skill1">Skill 1:</label>
+      <input type="text" id="skill1" name="skill1" placeholder="Enter your skill 1" required>
+      <label for="skill2">Skill 2:</label>
+      <input type="text" id="skill2" name="skill2" placeholder="Enter your skill 2" required>
+      <label for="skill3">Skill 3:</label>
+      <input type="text" id="skill3" name="skill3" placeholder="Enter your skill 3" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Languages</legend>
+      <label for="language1">Language 1:</label>
+      <input type="text" id="language1" name="language1" placeholder="Enter your language 1" required>
+      <label for="language2">Language 2:</label>
+      <input type="text" id="language2" name="language2" placeholder="Enter your language 2" required>
+      <label for="language3">Language 3:</label>
+      <input type="text" id="language3" name="language3" placeholder="Enter your language 3" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Interests</legend>
+      <label for="interest1">Interest 1:</label>
+      <input type="text" id="interest1" name="interest1" placeholder="Enter your interest 1" required>
+      <label for="interest2">Interest 2:</label>
+      <input type="text" id="interest2" name="interest2" placeholder="Enter your interest 2" required>
+      <label for="interest3">Interest 3:</label>
+      <input type="text" id="interest3" name="interest3" placeholder="Enter your interest 3" required>
+    </fieldset>
+
+    <button type="submit">Generate Resume</button>
+
+  </form>
+  </div>
+
+  <div id="resumeContainer" class="hidden">
+    <div id="resume" class="hidden">
+      <img id="resume-photo" class="photo" src="" alt="photo">
+      <h1 id="resume-name"></h1>
+      <p id="resume-email"></p>
+      <p id="resume-phone"></p>
+      <p id="resume-address"></p>
+      <h2>Education</h2>
+      <p id="resume-degree"></p>
+      <p id="resume-university"></p>
+      <p id="resume-year"></p>
+      <h2>Work Experience</h2>
+      <p id="resume-company"></p>
+      <p id="resume-position"></p>
+      <p id="resume-start-date"></p>
+      <p id="resume-end-date"></p>
+      <p id="resume-description"></p>
+      <h2>Skills</h2>
+      <p id="resume-skill1"></p>
+      <p id="resume-skill2"></p>
+      <p id="resume-skill3"></p>
+      <h2>Languages</h2>
+      <p id="resume-language1"></p>
+      <p id="resume-language2"></p>
+      <p id="resume-language3"></p>
+      <h2>Interests</h2>
+      <p id="resume-interest1"></p>
+      <p id="resume-interest2"></p>
+      <p id="resume-interest3"></p>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <button id="edit-btn">Edit</button>
+    <button id="back-btn" onclick="window.location.href = 'index.html'">Back to Form</button>
+    <button id="shareLink-btn">Share Your Resume</button>
+    <button id="download-pdf">Download Resume</button>
+    
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
 </html>

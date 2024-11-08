@@ -1,82 +1,183 @@
-let _a, _b, _c;
-let educationData = [
-    {
-        diploma: "Cloud Applied Generative AI Engineer",
-        institution: "Governor Initiative For Artificial Intelligence and Computing",
-        year: "2024",
-    },
-    {
-        diploma: "Marketing",
-        institution: "BanoQabil",
-        year: "2023",
-    },
-];
-let skillsData = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "TypeScript",
-    "Tailwind CSS",
-    "React.js",
-    "Next.js",
-];
-let workExperienceData = [
-    {
-        position: "Frontend Developer",
-        company: "Young Dev",
-        years: "2023 - 2024",
-        description: "I'm an enthusiastic and ambitious fresh developer, eager to apply my skills and knowledge to build innovative solutions. With a strong foundation in programming languages and web development frameworks, I'm excited to learn and grow as a developer. I'm passionate about creating user-friendly and efficient digital experiences, and I'm looking forward to contributing to exciting projects and collaborating with like-minded individuals",
-    },
-];
-function populateEducation() {
-    let _a;
-    let educationSection = (_a = document.getElementById("education-content")) === null || _a === void 0 ? void 0 : _a.querySelector(".card-grid");
-    if (educationSection) {
-        educationData.forEach(function (edu) {
-            var educationCard = document.createElement("div");
-            educationCard.classList.add("card");
-            educationCard.classList.add("education-card");
-            educationCard.innerHTML = "\n                  <h3 class=\"card-title\">".concat(edu.diploma, "</h3>\n                  <p class=\"card-subtitle\">").concat(edu.institution, "</p>\n                  <p class=\"card-details\">").concat(edu.year, "</p>\n              ");
-            educationSection.appendChild(educationCard);
-        });
+"use strict";
+// const form = document.getElementById('resume-form') as HTMLFormElement;
+// const resumeContainer = document.getElementById('resume-container') as HTMLDivElement;
+// const resume = document.getElementById('resume') as HTMLDivElement;
+// const photo = document.getElementById('photo') as HTMLImageElement;
+// const name = document.getElementById('name') as HTMLHeadingElement;
+// const email = document.getElementById('email') as HTMLParagraphElement;
+// const phone = document.getElementById('phone') as HTMLParagraphElement;
+// const address = document.getElementById('address') as HTMLParagraphElement;
+// const degree = document.getElementById('degree') as HTMLParagraphElement;
+// const university = document.getElementById('university') as HTMLParagraphElement;
+// const year = document.getElementById('year') as HTMLParagraphElement;
+// const company = document.getElementById('company') as HTMLParagraphElement;
+// const position = document.getElementById('position') as HTMLParagraphElement;
+// const startDate = document.getElementById('start-date') as HTMLParagraphElement;
+// const endDate = document.getElementById('end-date') as HTMLParagraphElement;
+// const description = document.getElementById('description') as HTMLParagraphElement;
+// const skill1 = document.getElementById('skill1') as HTMLParagraphElement;
+// const skill2 = document.getElementById('skill2') as HTMLParagraphElement;
+// const skill3 = document.getElementById('skill3') as HTMLParagraphElement;
+// const language1 = document.getElementById('language1') as HTMLParagraphElement;
+// const language2 = document.getElementById('language2') as HTMLParagraphElement;
+// const language3 = document.getElementById('language3') as HTMLParagraphElement;
+// const interest1 = document.getElementById('interest1') as HTMLParagraphElement;
+// const interest2 = document.getElementById('interest2') as HTMLParagraphElement;
+// const interest3 = document.getElementById('interest3') as HTMLParagraphElement;
+// const editBtn = document.querySelector('edit-btn') as HTMLButtonElement;
+// const backBtn = document.querySelector('back-btn') as HTMLButtonElement;
+// const shareLinkBtn = document.querySelector('shareLink-btn') as HTMLButtonElement;
+// const downloadPdf = document.querySelector('download-pdf') as HTMLButtonElement;
+Object.defineProperty(exports, "__esModule", { value: true });
+// form.addEventListener('submit', async (event) => {
+//   event.preventDefault();
+//   const name1 = (document.getElementById('name') as HTMLInputElement).value;
+//   const email1 = (document.getElementById('email') as HTMLInputElement).value;
+//   const phone1 = (document.getElementById('phone') as HTMLInputElement).value;
+//   const address1 = (document.getElementById('address') as HTMLInputElement).value;
+//   const degree1 = (document.getElementById('degree') as HTMLInputElement).value;
+//   const university1 = (document.getElementById('university') as HTMLInputElement).value;
+//   const year1 = (document.getElementById('year') as HTMLInputElement).value;
+//   const company1 = (document.getElementById('company') as HTMLInputElement).value;
+//   const position1 = (document.getElementById('position') as HTMLInputElement).value;
+//   const startDate1 = (document.getElementById('start-date') as HTMLInputElement).value;
+//   const endDate1 = (document.getElementById('end-date') as HTMLInputElement).value;
+//   const description1 = (document.getElementById('description') as HTMLInputElement).value;
+//   const skill1 = (document.getElementById('skill1') as HTMLInputElement).value;
+//   const skill2 = (document.getElementById('skill2') as HTMLInputElement).value;
+//   const skill3 = (document.getElementById('skill3') as HTMLInputElement).value;
+//   const language1 = (document.getElementById('language1') as HTMLInputElement).value;
+//   const language2 = (document.getElementById('language2') as HTMLInputElement).value;
+//   const language3 = (document.getElementById('language3') as HTMLInputElement).value;
+//   const interest1 = (document.getElementById('interest1') as HTMLInputElement).value;
+//   const interest2 = (document.getElementById('interest2') as HTMLInputElement).value;
+//   const interest3 = (document.getElementById('interest3') as HTMLInputElement).value;
+//   const photoInput = document.getElementById('photo') as HTMLInputElement;
+//   const photofile = photoInput.files ? photoInput.files[0] : null;
+//   let photoBase64: '' ;
+//   if (photofile) {
+//    photoBase64 = await fileToBase64(photofile);
+//    localStorage.setItem('photo', photoBase64);
+//    photo.src = photoBase64; 
+//   }
+//   document.querySelector("container")?.classList.add("hidden");
+//   resumeContainer.classList.remove("hidden");
+//   name.textContent = name1;
+//   email.textContent = `Email: ${email1}`;
+//   phone.textContent = phone1;
+//   address.textContent = address1;
+//   degree.textContent = degree1;
+//   university.textContent = university1;
+//   year.textContent = year1;
+//   company.textContent = company1;
+//   position.textContent = position1;
+//   startDate.textContent = startDate1;
+//   endDate.textContent = endDate1;
+//   description.textContent = description1;
+//   skill1.textContent = skill1;
+//   skill2.textContent = skill2;
+//   skill3.textContent = skill3;
+//   language1.textContent = language1;
+//   language2.textContent = language2;
+//   language3.textContent = language3;
+//   interest1.textContent = interest1;
+//   interest2.textContent = interest2;
+//   interest3.textContent = interest3;
+// });
+//..........................
+const form = document.getElementById('resume-form-container');
+const resumeContainer = document.getElementById('resumeContainer');
+// const resume = document.getElementById('resume') as HTMLDivElement;
+const photo = document.getElementById('resume-photo');
+const name = document.getElementById('resume-name');
+const email = document.getElementById('resume-email');
+const phone = document.getElementById('resume-phone');
+const address = document.getElementById('resume-address');
+const degree = document.getElementById('resume-degree');
+const university = document.getElementById('resume-university');
+const year = document.getElementById('resume-year');
+const company = document.getElementById('resume-company');
+const position = document.getElementById('resume-position');
+const startDate = document.getElementById('resume-start-date');
+const endDate = document.getElementById('resume-end-date');
+const description = document.getElementById('resume-description');
+const skill1 = document.getElementById('resume-skill1');
+const skill2 = document.getElementById('resume-skill2');
+const skill3 = document.getElementById('resume-skill3');
+const language1 = document.getElementById('resume-language1');
+const language2 = document.getElementById('resume-language2');
+const language3 = document.getElementById('resume-language3');
+const interest1 = document.getElementById('resume-interest1');
+const interest2 = document.getElementById('resume-interest2');
+const interest3 = document.getElementById('resume-interest3');
+const editBtn = document.querySelector('edit-btn');
+const backBtn = document.querySelector('back-btn');
+const shareLinkBtn = document.querySelector('shareLink-btn');
+const downloadPdf = document.querySelector('download-pdf');
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    // Retrieve input values
+    const name1 = document.getElementById('name').value;
+    const email1 = document.getElementById('email').value;
+    const phone1 = document.getElementById('phone').value;
+    const address1 = document.getElementById('address').value;
+    const degree1 = document.getElementById('degree').value;
+    const university1 = document.getElementById('university').value;
+    const year1 = document.getElementById('year').value;
+    const company1 = document.getElementById('company').value;
+    const position1 = document.getElementById('position').value;
+    const startDate1 = document.getElementById('start-date').value;
+    const endDate1 = document.getElementById('end-date').value;
+    const description1 = document.getElementById('description').value;
+    const skill1Value = document.getElementById('skill1').value;
+    const skill2Value = document.getElementById('skill2').value;
+    const skill3Value = document.getElementById('skill3').value;
+    const language1Value = document.getElementById('language1').value;
+    const language2Value = document.getElementById('language2').value;
+    const language3Value = document.getElementById('language3').value;
+    const interest1Value = document.getElementById('interest1').value;
+    const interest2Value = document.getElementById('interest2').value;
+    const interest3Value = document.getElementById('interest3').value;
+    // Handle photo upload
+    const photoInput = document.getElementById('photo');
+    const photoFile = photoInput.files ? photoInput.files[0] : null;
+    let photoBase64 = '';
+    if (photoFile) {
+        photoBase64 = await fileToBase64(photoFile);
+        photo.src = photoBase64;
+        // localStorage.setItem('photo', photoBase64);
+        // photo.src = photoBase64;
     }
+    // Populate resume with form data
+    // document.querySelector(".container")?.classList.add("hidden");
+    resumeContainer.classList.remove("hidden");
+    name.textContent = name1;
+    email.textContent = `Email: ${email1}`;
+    phone.textContent = phone1;
+    address.textContent = address1;
+    degree.textContent = degree1;
+    university.textContent = university1;
+    year.textContent = year1;
+    company.textContent = company1;
+    position.textContent = position1;
+    startDate.textContent = startDate1;
+    endDate.textContent = endDate1;
+    description.textContent = description1;
+    skill1.textContent = skill1Value;
+    skill2.textContent = skill2Value;
+    skill3.textContent = skill3Value;
+    language1.textContent = language1Value;
+    language2.textContent = language2Value;
+    language3.textContent = language3Value;
+    interest1.textContent = interest1Value;
+    interest2.textContent = interest2Value;
+    interest3.textContent = interest3Value;
+});
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
 }
-function populateSkills() {
-    let _a;
-    let skillsSection = (_a = document.getElementById("skills-content")) === null || _a === void 0 ? void 0 : _a.querySelector(".skill-list");
-    if (skillsSection) {
-        skillsData.forEach(function (skill) {
-            var skillItem = document.createElement("li");
-            skillItem.textContent = skill;
-            skillsSection.appendChild(skillItem);
-        });
-    }
-}
-function populateWorkExperience() {
-    let _a;
-    let workExperienceSection = (_a = document.getElementById("work-experience-content")) === null || _a === void 0 ? void 0 : _a.querySelector(".card-grid");
-    if (workExperienceSection) {
-        workExperienceData.forEach(function (work) {
-            var workCard = document.createElement("div");
-            workCard.classList.add("card");
-            workCard.classList.add("work-experience-card");
-            workCard.innerHTML = "\n                  <h3 class=\"card-title\">".concat(work.position, "</h3>\n                  <p class=\"card-subtitle\">").concat(work.company, "</p>\n                  <p class=\"card-details\">").concat(work.years, "</p>\n                  <p class=\"card-details\">").concat(work.description, "</p>\n              ");
-            workExperienceSection.appendChild(workCard);
-        });
-    }
-}
-function activateTab(tabId) {
-    let sections = document.querySelectorAll(".content-section");
-    sections.forEach(function (section) { return section.classList.remove("active"); });
-    let activeSection = document.getElementById(tabId);
-    if (activeSection) {
-        activeSection.classList.add("active");
-    }
-}
-(_a = document.getElementById("education-tab")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () { return activateTab("education-content"); });
-(_b = document.getElementById("skills-tab")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () { return activateTab("skills-content"); });
-(_c = document.getElementById("experience-tab")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () { return activateTab("work-experience-content"); });
-
-populateEducation();
-populateSkills();
-populateWorkExperience();
