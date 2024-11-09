@@ -25,6 +25,7 @@ const language3 = document.getElementById('resume-language3');
 const interest1 = document.getElementById('resume-interest1');
 const interest2 = document.getElementById('resume-interest2');
 const interest3 = document.getElementById('resume-interest3');
+const submitBtn = document.querySelector('submit-btn');
 const editBtn = document.querySelector('edit-btn');
 const backBtn = document.querySelector('back-btn');
 const shareLinkBtn = document.querySelector('shareLink-btn');
@@ -53,6 +54,11 @@ form.addEventListener('submit', async (event) => {
     const interest1Value = document.getElementById('interest1').value;
     const interest2Value = document.getElementById('interest2').value;
     const interest3Value = document.getElementById('interest3').value;
+    const submitBtn1 = document.querySelector('submit-btn');
+    const editBtn1 = document.querySelector('edit-btn');
+    const backBtn1 = document.querySelector('back-btn');
+    const shareLinkBtn1 = document.querySelector('shareLink-btn');
+    const downloadPdf1 = document.querySelector('download-pdf');
     // Handle photo upload
     const photoInput = document.getElementById('photo');
     const photoFile = photoInput.files ? photoInput.files[0] : null;
@@ -60,11 +66,11 @@ form.addEventListener('submit', async (event) => {
     if (photoFile) {
         photoBase64 = await fileToBase64(photoFile);
         photo.src = photoBase64;
-        // localStorage.setItem('photo', photoBase64);
-        // photo.src = photoBase64;
+        localStorage.setItem('photo', photoBase64);
+        photo.src = photoBase64;
     }
     // Populate resume with form data
-    // document.querySelector(".container")?.classList.add("hidden");
+    document.querySelector(".container")?.classList.add("hidden");
     resumeContainer.classList.remove("hidden");
     name.textContent = name1;
     email.textContent = `Email: ${email1}`;
@@ -87,6 +93,11 @@ form.addEventListener('submit', async (event) => {
     interest1.textContent = interest1Value;
     interest2.textContent = interest2Value;
     interest3.textContent = interest3Value;
+    submitBtn1.classList.add("hidden");
+    editBtn1.classList.remove("hidden");
+    backBtn1.classList.remove("hidden");
+    shareLinkBtn1.classList.remove("hidden");
+    downloadPdf1.classList.remove("hidden");
 });
 function fileToBase64(file) {
     return new Promise((resolve, reject) => {

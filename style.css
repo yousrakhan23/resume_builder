@@ -1,11 +1,23 @@
-/* General Styles */
+
 * {
   box-sizing: border-box;
-  margin: 0;
+  margin: 0rem;
   padding: 0;
   font-family:Georgia, 'Times New Roman', Times, serif;
 }
-
+h1{
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #140246;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  /* color: #bdee0b; */
+}
+/* h1:hover{
+  color: #140246;
+  cursor: pointer;
+  text-shadow: black 0.1em 0.1em 0.2em;
+} */
 body {
   background-image: linear-gradient(to right, #ca664d, #feb47b, #08307a, #91eae4);
   display: flex;
@@ -19,7 +31,7 @@ form {
   background-color: transparent;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(85, 11, 170, 0.1);
-  max-width: 600px;
+  max-width: 700px;
   width: 100%;
   padding: 20px;
 }
@@ -85,7 +97,7 @@ button[type="submit"]:hover {
   display: none;
 }
 
-/* Responsive Design*/
+
 @media (max-width: 768px) {
   body {
     padding: 10px;

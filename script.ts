@@ -23,7 +23,7 @@ const language3 = document.getElementById('resume-language3') as HTMLSpanElement
 const interest1 = document.getElementById('resume-interest1') as HTMLSpanElement;
 const interest2 = document.getElementById('resume-interest2') as HTMLSpanElement;
 const interest3 = document.getElementById('resume-interest3') as HTMLSpanElement;
-
+const submitBtn = document.querySelector('submit-btn') as HTMLButtonElement;
 const editBtn = document.querySelector('edit-btn') as HTMLButtonElement;
 const backBtn = document.querySelector('back-btn') as HTMLButtonElement;
 const shareLinkBtn = document.querySelector('shareLink-btn') as HTMLButtonElement;
@@ -54,6 +54,12 @@ form.addEventListener('submit', async (event) => {
   const interest1Value = (document.getElementById('interest1') as HTMLInputElement).value;
   const interest2Value = (document.getElementById('interest2') as HTMLInputElement).value;
   const interest3Value = (document.getElementById('interest3') as HTMLInputElement).value;
+  const submitBtn1 = document.querySelector('submit-btn') as HTMLButtonElement;
+  const editBtn1 = document.querySelector('edit-btn') as HTMLButtonElement;
+  const backBtn1 = document.querySelector('back-btn') as HTMLButtonElement;
+  const shareLinkBtn1 = document.querySelector('shareLink-btn') as HTMLButtonElement;
+  const downloadPdf1 = document.querySelector('download-pdf') as HTMLButtonElement;
+
   
   // Handle photo upload
   const photoInput = document.getElementById('photo') as HTMLInputElement;
@@ -63,12 +69,12 @@ form.addEventListener('submit', async (event) => {
   if (photoFile) {
     photoBase64 = await fileToBase64(photoFile);
     photo.src = photoBase64;
-    // localStorage.setItem('photo', photoBase64);
-    // photo.src = photoBase64;
+    localStorage.setItem('photo', photoBase64);
+    photo.src = photoBase64;
   }
 
   // Populate resume with form data
-  // document.querySelector(".container")?.classList.add("hidden");
+   document.querySelector(".container")?.classList.add("hidden");
   resumeContainer.classList.remove("hidden");
 
   name.textContent = name1;
@@ -92,6 +98,12 @@ form.addEventListener('submit', async (event) => {
   interest1.textContent = interest1Value;
   interest2.textContent = interest2Value;
   interest3.textContent = interest3Value;
+
+  submitBtn1.classList.add("hidden");
+  editBtn1.classList.remove("hidden");
+  backBtn1.classList.remove("hidden");
+  shareLinkBtn1.classList.remove("hidden");
+  downloadPdf1.classList.remove("hidden");
 });
 
 
@@ -103,3 +115,6 @@ function fileToBase64(file: File): Promise<string> {
     reader.readAsDataURL(file);
   });
 }
+
+
+
