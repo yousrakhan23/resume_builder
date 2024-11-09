@@ -32,6 +32,7 @@ form, #resume-form-container {
   padding: 20px;
 }
 
+
 fieldset {
   border: none;
   margin-bottom: 20px;
@@ -110,8 +111,7 @@ button[type="submit"]:hover,
 }
 #resume {
   padding: 20px;
-  
-  background-color: transparent;
+  border:  transparent;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -120,11 +120,15 @@ button[type="submit"]:hover,
   width: 150px;
   height: 200px;
   border-radius: 50%;
+  border: solid 2px #2b0557;
+  box-shadow: 0 4px 12px rgba(17, 17, 1, 0.842);
   object-fit: cover;
   margin-bottom: 20px;
 }
 
 #resume h1 {
+  text-align: center;
+  padding: top 20px;
   font-size: 1.8rem;
   color: #000000;
   margin-bottom: 0.5rem;
